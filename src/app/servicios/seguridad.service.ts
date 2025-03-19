@@ -83,6 +83,16 @@ export class SeguridadService {
     });
   }
 
+  registrarUsuarioPublico(datos: any): Observable<UsuarioModel>{
+    return this.http.post<UsuarioModel>(`${this.urlBase}usuario-publico`, datos);
+  }
+
+  validarHashUsuarioPublico(hash: string): Observable<boolean>{
+    return this.http.post<boolean>(`${this.urlBase}validar-hash-usuario`,{
+      codigoHash: hash
+    });
+  }
+
   /**
    * Guardar en localStorage la información del usuario validado
    * @param datos datos del usuario validado

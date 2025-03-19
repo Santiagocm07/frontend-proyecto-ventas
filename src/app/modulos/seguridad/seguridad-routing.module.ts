@@ -5,6 +5,8 @@ import { CambioClaveComponent } from './cambio-clave/cambio-clave.component';
 import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { IdentificacionSegundofaComponent } from './identificacion-segundofa/identificacion-segundofa.component';
+import { RegistroPublicoUsuariosComponent } from './registro-publico-usuarios/registro-publico-usuarios.component';
+import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publico/validar-hash-usuario-publico.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: "2fa",
     component: IdentificacionSegundofaComponent
+  },
+  {
+    path: "registro-publico",
+    component: RegistroPublicoUsuariosComponent
+  },
+  {
+    path: "validar-hash-usuario-publico/:hash",
+    component: ValidarHashUsuarioPublicoComponent
   }
 ];
 
