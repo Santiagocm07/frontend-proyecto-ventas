@@ -6,7 +6,7 @@ import { PiePaginaComponent } from './publico/pagina-maestra/pie-pagina/pie-pagi
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, EncabezadoComponent, MenuLateralComponent, PiePaginaComponent],
+  imports: [RouterOutlet, EncabezadoComponent, PiePaginaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

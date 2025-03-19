@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { SeguridadService } from '../../../servicios/seguridad.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { UsuarioValidadoModel } from '../../../modelos/usuario.validado.model';
 
 @Component({
   selector: 'app-identificacion-segundofa',
@@ -16,7 +18,8 @@ export class IdentificacionSegundofaComponent {
 
   constructor(
     private servicioSeguridad: SeguridadService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
 
   }
@@ -26,6 +29,8 @@ export class IdentificacionSegundofaComponent {
     if(datos != null) {
       this.usuarioId = datos._id!;
       this.construirFormulario();
+    } else {
+      this.router.navigate(['/seguridad/identificar-usuario']);
     }
   }
 
@@ -41,8 +46,10 @@ export class IdentificacionSegundofaComponent {
     } else {
       let codigo2fa = this.obtenerFormGroup["codigo"].value;
       this.servicioSeguridad.validarCodigo2FA(this.usuarioId, codigo2fa).subscribe({
-        next: (datos:object) => {
+        next: (datos:UsuarioValidadoModel) => {
           console.log(datos);
+          this.servicioSeguridad.almacenarDatosUsuarioValidado(datos);
+          this.router.navigate([""]);
         },
         error: (err) => {
           console.log(err);
