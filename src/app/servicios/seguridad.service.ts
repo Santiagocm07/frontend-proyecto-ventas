@@ -43,6 +43,19 @@ export class SeguridadService {
     }
   }
 
+  // Cerrando sesión
+  removerDatosUsuarioValidado(){
+    let datosUsuario = localStorage.getItem("datos-usuario");
+    let datosSesion = localStorage.getItem("datos-sesion");
+    if(datosUsuario){
+      localStorage.removeItem("datos-usuario");
+    }
+    if(datosSesion){
+      localStorage.removeItem("datos-sesion");
+    }
+    this.actualizarComportamientoUsuario(new UsuarioValidadoModel());
+  }
+
   /**
    * Busca los datos en localStorage de un usuario
    * @returns 
@@ -82,8 +95,15 @@ export class SeguridadService {
     } else {
       let datosString = JSON.stringify(datos);
       localStorage.setItem("datos-sesion", datosString);
+      this.actualizarComportamientoUsuario(datos);
       return true;
     }
+  }
+
+  recuperarClavePorUsuario(usuario: string): Observable<UsuarioModel>{
+    return this.http.post<UsuarioModel>(`${this.urlBase}recuperar-clave`, {
+      correo: usuario,
+    });
   }
 
   // Administración de la sesión de usuario
