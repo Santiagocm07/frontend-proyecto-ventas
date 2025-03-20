@@ -11,27 +11,34 @@ import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.com
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
 import { EliminarUsuarioComponent } from './usuario/eliminar-usuario/eliminar-usuario.component';
+import { validarSesionInactivaGuard } from '../../guardianes/validar-sesion-inactiva.guard';
+import { validarSesionActivaGuard } from '../../guardianes/validar-sesion-activa.guard';
 
 const routes: Routes = [
   {
     path: "identificar-usuario",
-    component: IdentificacionUsuarioComponent
+    component: IdentificacionUsuarioComponent,
+    canActivate: [validarSesionInactivaGuard]
   },
   {
     path: "cambiar-clave",
-    component: CambioClaveComponent
+    component: CambioClaveComponent,
+    canActivate: [validarSesionActivaGuard]
   },
   {
     path: "recuperar-clave",
-    component: RecuperarClaveComponent
+    component: RecuperarClaveComponent,
+    canActivate: [validarSesionInactivaGuard]
   },
   {
     path: "cerrar-sesion",
-    component: CerrarSesionComponent
+    component: CerrarSesionComponent,
+    canActivate: [validarSesionActivaGuard]
   },
   {
     path: "2fa",
-    component: IdentificacionSegundofaComponent
+    component: IdentificacionSegundofaComponent,
+    canActivate: [validarSesionInactivaGuard]
   },
   {
     path: "registro-publico",
@@ -43,19 +50,23 @@ const routes: Routes = [
   },
   {
     path: "usuario-crear",
-    component: CrearUsuarioComponent
+    component: CrearUsuarioComponent,
+    canActivate: [validarSesionActivaGuard]
   },
   {
     path: "usuario-listar",
-    component: ListarUsuarioComponent
+    component: ListarUsuarioComponent,
+    canActivate: [validarSesionActivaGuard]
   },
   {
     path: "usuario-editar/:id",
-    component: EditarUsuarioComponent
+    component: EditarUsuarioComponent,
+    canActivate: [validarSesionActivaGuard]
   },
   {
     path: "usuario-eliminar",
-    component: EliminarUsuarioComponent
+    component: EliminarUsuarioComponent,
+    canActivate: [validarSesionActivaGuard]
   }
 ];
 

@@ -127,12 +127,14 @@ export class SeguridadService {
     return this.datosUsuarioValidado.asObservable();
   }
   
-  validacionDeSesion() {
+  validacionDeSesion(): UsuarioValidadoModel | null {
     let ls = localStorage.getItem("datos-sesion");
     if (ls){
       let objUsuario = JSON.parse(ls);
       this.actualizarComportamientoUsuario(objUsuario);
+      return objUsuario;
     }
+    return null;
   }
 
   actualizarComportamientoUsuario(datos: UsuarioValidadoModel) {
