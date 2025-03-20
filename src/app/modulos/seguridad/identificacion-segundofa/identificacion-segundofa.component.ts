@@ -40,6 +40,7 @@ export class IdentificacionSegundofaComponent {
     });
   }
 
+  // Validación del 2FA
   validarCodigo2fa(){
     if(this.fGroup.invalid) {
       alert("Debe ingresar el código");
@@ -48,6 +49,7 @@ export class IdentificacionSegundofaComponent {
       this.servicioSeguridad.validarCodigo2FA(this.usuarioId, codigo2fa).subscribe({
         next: (datos:UsuarioValidadoModel) => {
           console.log(datos);
+          this.servicioSeguridad.construirMenuLateral(datos.menu);
           this.servicioSeguridad.almacenarDatosUsuarioValidado(datos);
           this.router.navigate([""]);
         },

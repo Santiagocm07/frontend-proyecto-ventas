@@ -7,10 +7,8 @@
         <a href="#name"><span class="white-text name">John Doe</span></a>
         
     </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    <li *ngFor="let m of listaMenu">
+        <a href="{{ m.ruta }}">{{ m.texto }}</a>
+    </li>
 </ul>
 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
