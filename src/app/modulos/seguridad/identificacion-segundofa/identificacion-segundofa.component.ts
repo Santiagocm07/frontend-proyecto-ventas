@@ -49,9 +49,13 @@ export class IdentificacionSegundofaComponent {
       this.servicioSeguridad.validarCodigo2FA(this.usuarioId, codigo2fa).subscribe({
         next: (datos:UsuarioValidadoModel) => {
           console.log(datos);
-          this.servicioSeguridad.construirMenuLateral(datos.menu);
-          this.servicioSeguridad.almacenarDatosUsuarioValidado(datos);
-          this.router.navigate([""]);
+          if (datos.token != null && datos.token != undefined && datos.token != "") {
+            this.servicioSeguridad.construirMenuLateral(datos.menu);
+            this.servicioSeguridad.almacenarDatosUsuarioValidado(datos);
+            this.router.navigate([""]);
+          } else {
+            alert("El código no es válido, por favor revisa tu correo electrónico");
+          }
         },
         error: (err) => {
           console.log(err);
