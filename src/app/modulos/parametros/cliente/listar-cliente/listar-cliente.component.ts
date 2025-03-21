@@ -3,25 +3,36 @@ import { PaginadorClienteModel } from '../../../../modelos/paginador.cliente.mod
 import { ClienteService } from '../../../../servicios/parametros/cliente.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClienteModel } from '../../../../modelos/cliente.model';
+import { ConfiguracionPaginacion } from '../../../../config/configuracion.paginacion';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-listar-cliente',
-  imports: [CommonModule, ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule],
   templateUrl: './listar-cliente.component.html',
   styleUrl: './listar-cliente.component.css'
 })
 export class ListarClienteComponent {
-  listaRegistros: PaginadorClienteModel = new PaginadorClienteModel();
-  pag = 1;
+  listaRegistros: ClienteModel[] = [];
+  pag: number = 1;
+  total: number = 0;
+  registrosPorPagina = ConfiguracionPaginacion.registroPorPagina;
 
   constructor(
     private servicio: ClienteService
   ){}
 
   ngOnInit(){
+    this.listarRegistros();
+  }
+
+  listarRegistros(){
     this.servicio.listarRegistros(this.pag).subscribe({
       next: (datos) => {
-        this.listaRegistros = datos;
+        this.listaRegistros = datos.registros;
+        this.total = datos.totalRegistros;
       },
       error: (err) => {
         alert("Error leyendo los clientes")
