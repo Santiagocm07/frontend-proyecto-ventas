@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConfiguracionRutasBackend } from '../config/configuracion.rutas.backend';
+import { ConfiguracionRutasBackend } from '../../config/configuracion.rutas.backend';
 import { Observable } from 'rxjs';
-import { ProductoModel } from '../modelos/producto.model';
-import { ConfiguracionPaginacion } from '../config/configuracion.paginacion';
+import { ProductoModel } from '../../modelos/producto.model';
+import { ConfiguracionPaginacion } from '../../config/configuracion.paginacion';
 
 @Injectable({
   providedIn: 'root'

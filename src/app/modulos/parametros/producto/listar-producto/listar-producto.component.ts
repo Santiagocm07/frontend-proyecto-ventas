@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductoModel } from '../../../../modelos/producto.model';
-import { ParametrosService } from '../../../../servicios/parametros.service';
+import { ParametrosService } from '../../../../servicios/parametros/producto.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -13,11 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class ListarProductoComponent {
   listaRegistros:ProductoModel [] = [];
   constructor(
-    private servicioParametros: ParametrosService
+    private servicioProductos: ParametrosService
   ){}
 
   ngOnInit(){
-    this.servicioParametros.listarRegistro().subscribe({
+    this.servicioProductos.listarRegistro().subscribe({
       next: (datos) => {
         this.listaRegistros = datos;
       },

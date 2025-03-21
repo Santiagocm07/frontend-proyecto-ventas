@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ParametrosService } from './parametros.service';
+import { ParametrosService } from './producto.service';
 
 describe('ParametrosService', () => {
   let service: ParametrosService;
