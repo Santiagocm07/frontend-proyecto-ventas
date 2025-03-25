@@ -178,4 +178,15 @@ export class SeguridadService {
     }
     return menu;
   }
+
+  obtenerTokenLocalStorage(): string {
+    let ls = localStorage.getItem("datos-sesion");
+    if (ls) {
+      let usuario: UsuarioValidadoModel = JSON.parse(ls);
+      return usuario.token!;
+    } else {
+      console.error("No se encontró el objeto de sesión en el localStorage");
+      return "";
+    }
+  }
 }

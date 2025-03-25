@@ -35,6 +35,7 @@ export class ListarClienteComponent {
         this.total = datos.totalRegistros;
       },
       error: (err) => {
+        console.error("Error en la solicitud:", err);
         alert("Error leyendo los clientes")
       }
     });
