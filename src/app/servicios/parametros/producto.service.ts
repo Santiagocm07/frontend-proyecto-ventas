@@ -45,8 +45,24 @@ export class ProductoService {
     });
   }
 
+  editarRegistro(registro: ProductoModel): Observable<ProductoModel> {
+    return this.http.put(`${this.urlBase}producto/${registro.id}`, registro, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
   cargarArchivo(formData: FormData): Observable<ArchivoModel> {
     return this.http.post<ArchivoModel>(`${this.urlBase}cargar-archivo-producto`, formData, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  buscarRegistro(id: number): Observable<ProductoModel> {
+    return this.http.get<ProductoModel>(`${this.urlBase}producto/${id}`, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

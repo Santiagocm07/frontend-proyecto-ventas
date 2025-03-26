@@ -1,5 +1,5 @@
 export class ProductoModel {
-    id?: string;
+    id?: number;
     nombre?: string;
     precioVenta?: string;
     cantidadDisponible?: string;
