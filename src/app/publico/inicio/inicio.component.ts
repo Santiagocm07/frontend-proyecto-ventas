@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductoModel } from '../../modelos/producto.model';
-import { ParametrosService } from '../../servicios/parametros/producto.service';
+import { ProductoService } from '../../servicios/parametros/producto.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class InicioComponent {
   listaRegistros: ProductoModel[] = [];
 
   constructor(
-    private servicio: ParametrosService
+    private servicio: ProductoService
   ){}
 
   ngOnInit(){

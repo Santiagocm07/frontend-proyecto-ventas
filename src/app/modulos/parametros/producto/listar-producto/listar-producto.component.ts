@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ProductoModel } from '../../../../modelos/producto.model';
-import { ParametrosService } from '../../../../servicios/parametros/producto.service';
+import { ProductoService } from '../../../../servicios/parametros/producto.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ConfiguracionPaginacion } from '../../../../config/configuracion.paginacion';
+import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
 
 @Component({
   selector: 'app-listar-producto',
@@ -17,8 +18,9 @@ export class ListarProductoComponent {
   pag = 1;
   total = 0;
   registrosPorPagina = ConfiguracionPaginacion.registroPorPagina;
+  BASE_URL: string = ConfiguracionRutasBackend.urlNegocio;
   constructor(
-    private servicioProductos: ParametrosService
+    private servicioProductos: ProductoService
   ){}
 
   ngOnInit(){

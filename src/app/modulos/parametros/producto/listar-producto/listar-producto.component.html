@@ -17,7 +17,7 @@
         <td>{{r.nombre}}</td>
         <td>{{r.precioVenta}}</td>
         <td>{{r.cantidadDisponible}}</td>
-        <td><img src="{{r.foto}}" class="imagenLimitadoRegistros" alt=""></td>
+        <td><img src="{{BASE_URL}}obtenerArchivo/1/{{r.foto}}" class="imagenLimitadoRegistros" alt=""></td>
         <td>
             <a href="/parametros/producto-editar/{{r.id}}" class="btn orange">Editar</a>&nbsp;
             <a href="/parametros/producto-eliminar/{{r.id}}" class="btn red">Eliminar</a>

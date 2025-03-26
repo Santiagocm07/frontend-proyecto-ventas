@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfiguracionRutasBackend } from '../../config/configuracion.rutas.backend';
 import { Observable } from 'rxjs';
@@ -6,11 +6,12 @@ import { ProductoModel } from '../../modelos/producto.model';
 import { ConfiguracionPaginacion } from '../../config/configuracion.paginacion';
 import { PaginadorProductoModel } from '../../modelos/paginador.producto.model';
 import { SeguridadService } from '../seguridad.service';
+import { ArchivoModel } from '../../modelos/archivo.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ParametrosService {
+export class ProductoService {
   token = "";
   urlBase: string = ConfiguracionRutasBackend.urlNegocio;
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) { 
@@ -33,6 +34,22 @@ export class ParametrosService {
       headers: {
         "Authorization": `Bearer ${this.token}`
       }
+    });
+  }
+
+  agregarRegistro(registro: ProductoModel): Observable<ProductoModel> {
+    return this.http.post(`${this.urlBase}producto`, registro, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  cargarArchivo(formData: FormData): Observable<ArchivoModel> {
+    return this.http.post<ArchivoModel>(`${this.urlBase}cargar-archivo-producto`, formData, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
     });
   }
 }
