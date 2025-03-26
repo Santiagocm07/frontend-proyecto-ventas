@@ -68,4 +68,12 @@ export class ProductoService {
       })
     });
   }
+
+  eliminarRegistro(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlBase}producto/${id}`, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
 }

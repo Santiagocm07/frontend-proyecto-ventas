@@ -1,7 +1,7 @@
 export class ProductoModel {
     id?: number;
     nombre?: string;
-    precioVenta?: string;
-    cantidadDisponible?: string;
+    precioVenta?: number;
+    cantidadDisponible?: number;
     foto?: string;
 }
