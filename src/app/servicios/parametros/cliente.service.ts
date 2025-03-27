@@ -3,8 +3,9 @@ import { ConfiguracionRutasBackend } from '../../config/configuracion.rutas.back
 import { Observable } from 'rxjs';
 import { PaginadorClienteModel } from '../../modelos/paginador.cliente.model';
 import { ConfiguracionPaginacion } from '../../config/configuracion.paginacion';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SeguridadService } from '../seguridad.service';
+import { ClienteModel } from '../../modelos/cliente.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,38 @@ export class ClienteService {
       headers: {
         "Authorization": `Bearer ${this.token}`
       }
+    });
+  }
+
+  buscarCliente(id: number): Observable<ClienteModel> {
+    return this.http.get<ClienteModel>(`${this.urlBase}cliente/${id}`, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  agregarCliente(cliente: ClienteModel): Observable<ClienteModel> {
+    return this.http.post(`${this.urlBase}cliente`, cliente, {
+      headers: new HttpHeaders ({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  editarCliente(cliente: ClienteModel): Observable<ClienteModel> {
+    return this.http.put(`${this.urlBase}cliente/${cliente.id}`, cliente, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  eliminarCliente(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlBase}cliente/${id}`, {
+      headers: new HttpHeaders ({
+        "Authorization": `Bearer ${this.token}`
+      })
     });
   }
 }

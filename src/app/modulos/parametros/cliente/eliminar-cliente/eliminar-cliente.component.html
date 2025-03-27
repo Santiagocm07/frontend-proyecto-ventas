@@ -1,1 +1,30 @@
-<p>eliminar-cliente works!</p>
+<fieldset class="center container">
+    <legend>Eliminar cliente</legend>
+    <div class="row">
+        <div class="row">
+            <div class="col s12">
+                <strong>¿Confirma la eliminación de estos datos?</strong>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col s4">Nombre: {{primerNombre}} {{segundoNombre}}</div>
+            <div class="col s4">Apellido: {{primerApellido}} {{segundoApellido}}</div>
+            <div class="col s4">Correo: {{correo}}</div>
+        </div>
+    
+        <div class="row">
+            <div class="col s4">Celular: {{celular}}</div>
+            <div class="col s4">Dirección: {{direccion}}</div>
+        </div>
+    
+        <div class="row">
+            <div class="row">
+                <div class="input-field col s12">
+                    <a href="/parametros/cliente-listar" class="btn red">Cancelar</a>&nbsp;
+                    <button (click)="eliminarRegistro()" class="btn waves-effect waves-light">Eliminar cliente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

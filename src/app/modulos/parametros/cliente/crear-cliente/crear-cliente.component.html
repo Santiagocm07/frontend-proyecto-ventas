@@ -1,1 +1,72 @@
-<p>crear-cliente works!</p>
+<fieldset class="center container">
+    <legend>Crear Cliente</legend>
+
+    <div class="row">
+        <form [formGroup]="fGroup">
+            <div class="row">
+                <div class="input field col s6">
+                    <input formControlName="primerNombre" class="validate" id="primerNombre" type="text">
+                    <label for="primerNombre">Primer Nombre</label>
+                    <div class="show-errors" *ngIf="obtenerFgDatos['primerNombre'].errors && (obtenerFgDatos['primerNombre'].dirty || obtenerFgDatos['primerNombre'].touched)">
+                        <strong>Este campo es obligatorio</strong>
+                    </div>
+                </div>
+
+                <div class="input field col s6">
+                    <input formControlName="segundoNombre" class="validate" id="segundoNombre" type="text">
+                    <label for="segundoNombre">Segundo Nombre</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input field col s6">
+                    <input formControlName="primerApellido" class="validate" id="primerApellido" type="text">
+                    <label for="primerApellido">Primer Apellido</label>
+                    <div class="show-errors" *ngIf="obtenerFgDatos['primerApellido'].errors && (obtenerFgDatos['primerApellido'].dirty || obtenerFgDatos['primerApellido'].touched)">
+                        <strong>Este campo es obligatorio</strong>
+                    </div>
+                </div>
+
+                <div class="input field col s6">
+                    <input formControlName="segundoApellido" class="validate" id="segundoApellido" type="text">
+                    <label for="segundoApellido">Segundo Apellido</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input field col s6">
+                    <input formControlName="correo" class="validate" id="correo" type="email">
+                    <label for="correo">Correo Electrónico</label>
+                    <div class="show-errors" *ngIf="obtenerFgDatos['correo'].errors && (obtenerFgDatos['correo'].dirty || obtenerFgDatos['correo'].touched)">
+                        <strong>Este campo es obligatorio y debe ser un correo válido</strong>
+                    </div>
+                </div>
+
+                <div class="input field col s6">
+                    <input formControlName="celular" class="validate" id="celular" type="text">
+                    <label for="celular">Celular</label>
+                    <div class="show-errors" *ngIf="obtenerFgDatos['celular'].errors && (obtenerFgDatos['celular'].dirty || obtenerFgDatos['celular'].touched)">
+                        <strong>Este campo es obligatorio</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input field col s12">
+                    <input formControlName="direccion" class="validate" id="direccion" type="text">
+                    <label for="direccion">Dirección</label>
+                    <div class="show-errors" *ngIf="obtenerFgDatos['direccion'].errors && (obtenerFgDatos['direccion'].dirty || obtenerFgDatos['direccion'].touched)">
+                        <strong>Este campo es obligatorio</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <a href="/parametros/cliente-listar" class="btn red">Cancelar</a>&nbsp;
+                    <button (click)="guardarRegistro()" class="btn waves-effect waves-light">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
