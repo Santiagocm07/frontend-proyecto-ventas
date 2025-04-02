@@ -22,8 +22,10 @@ export class ProductoService {
    * Listado de productos
    * @returns 
    */
-  listarRegistro(): Observable<ProductoModel[]> {
-    return this.http.get<ProductoModel[]>(`${this.urlBase}producto?filter={"limit":${ConfiguracionPaginacion.registroPorPagina}}`);
+  
+  listarRegistrosConFiltro(limit: number | null): Observable<ProductoModel[]> {
+    const url = limit? `${this.urlBase}producto?filter={"limit":${limit}}` : `${this.urlBase}producto`;
+    return this.http.get<ProductoModel[]>(url);
   }
 
   listarRegistrosPaginados(pag: number): Observable<PaginadorProductoModel> {

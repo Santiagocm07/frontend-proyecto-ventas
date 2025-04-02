@@ -1,16 +1,26 @@
 <div class="row">
-    <div *ngFor="let r of listaRegistros" class="col s3">
-      <div class="card">
-        <div class="card-image">
-          <img src="{{r.foto}}">
-          <span class="card-title">{{r.nombre}}</span>
-        </div>
-        <div class="card-content">
-          <p>Precio: {{r.precioVenta | currency}}. <br> La cantidad disponible es: {{r.cantidadDisponible}}</p>
-        </div>
-        <div class="card-action">
-          <a href="/detalles-producto/{{r.id}}">Ver más</a>
-        </div>
+
+
+  <!-- Filtro de cantidad de productos -->
+  <div class="col s10">
+    <label for="cantidad">Selecciona cantidad de productos a mostrar:</label>
+    <select id="cantidad" (change)="cambiarCantidadSeleccionada($event)">
+      <option *ngFor="let cantidad of cantidades" [value]="cantidad">{{ cantidad }}</option>
+    </select>
+  </div>
+
+  <div *ngFor="let r of listaRegistros" class="col s3">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{BASE_URL}}obtenerArchivo/1/{{r.foto}}">
+        <span class="card-title" style="color: black;">{{r.nombre}}</span>
+      </div>
+      <div class="card-content">
+        <p>Precio: {{r.precioVenta | currency}}. <br> Cant.disponible es: {{r.cantidadDisponible}}</p>
+      </div>
+      <div class="card-action">
+        <a href="/detalles-producto/{{r.id}}">Ver más</a>
       </div>
     </div>
+  </div>
 </div>

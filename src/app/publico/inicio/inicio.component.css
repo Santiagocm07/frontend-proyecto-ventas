@@ -1,0 +1,31 @@
+select {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 100px;
+}
+
+/* .card-title {
+    width: 100%;
+    height: 90px; 
+    background-color: rgba(231, 231, 231, 0.7);
+    font-size: 20px;
+    color: black;
+} */
+
+.card-title {
+    width: 60px;
+    height: 100%;
+    /* background-color: rgba(231, 231, 231, 0.7); */
+    background-color: #ffb22f;
+    box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5); 
+    font-size: 20px;
+    writing-mode: vertical-rl; /* Dirección de texto: de arriba a abajo */
+    transform: rotate(180deg); /* Girar el texto para que empiece de abajo hacia arriba*/
+    padding: 10px;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+}
