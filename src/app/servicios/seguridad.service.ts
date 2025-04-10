@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioModel } from '../modelos/usuario.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfiguracionRutasBackend } from '../config/configuracion.rutas.backend';
 import { UsuarioValidadoModel } from '../modelos/usuario.validado.model';
 import { PermisoModel } from '../modelos/permiso.model';
@@ -41,6 +41,7 @@ export class SeguridadService {
     if(datosLS){
       return false;
     } else{
+      console.log("Datos del usuario a almacenar", datos);
       localStorage.setItem("datos-usuario", cadena);
       return true;
     }
@@ -117,6 +118,20 @@ export class SeguridadService {
   recuperarClavePorUsuario(usuario: string): Observable<UsuarioModel>{
     return this.http.post<UsuarioModel>(`${this.urlBase}recuperar-clave`, {
       correo: usuario,
+    });
+  }
+
+  cambiarClave(clave: string, claveNueva: string, validarClaveNueva: string): Observable<any> {
+    const token = this.obtenerTokenLocalStorage();
+    const datosSesionActiva = this.obtenerDatosUsuarioLS();
+    console.log("Token obtenido", token);
+    return this.http.patch<any>(`${this.urlBase}cambiar-clave`, {
+      clave: clave,
+      claveNueva: claveNueva,
+      validarClaveNueva: validarClaveNueva,
+      idUsuario: datosSesionActiva?._id
+    }, {
+      headers: {'Authorization': `Bearer ${token}`}
     });
   }
 
