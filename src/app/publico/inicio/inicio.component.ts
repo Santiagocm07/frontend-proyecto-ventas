@@ -28,33 +28,55 @@ export class InicioComponent {
     this.listarRegistros();
   }
 
-  listarRegistros(){
-    if (this.cantidadSeleccionada === 'todos') {
-      this.servicio.listarRegistrosConFiltro(null).subscribe({
-        next: (datos) => {
-          this.listaRegistros = [];
-          this.listaRegistros = datos;
-          // Ordenar productos alfabéticamente
-          this.listaRegistros.sort((a, b) => a.nombre!.localeCompare(b.nombre!));
-        },
-        error: (err) => {
-          alert("Error al cargar los productos");
-        },
-      });
-    } else {
-      this.servicio.listarRegistrosConFiltro(Number(this.cantidadSeleccionada)).subscribe({
-        next: (datos) => {
-          this.listaRegistros = [];
-          this.listaRegistros = datos;
+  // listarRegistros(){
+  //   if (this.cantidadSeleccionada === 'todos') {
+  //     this.servicio.listarRegistrosConFiltro(null).subscribe({
+  //       next: (datos) => {
+  //         this.listaRegistros = [];
+  //         this.listaRegistros = datos;
+  //         // Ordenar productos alfabéticamente
+  //         this.listaRegistros.sort((a, b) => a.nombre!.localeCompare(b.nombre!));
+  //       },
+  //       error: (err) => {
+  //         alert("Error al cargar los productos");
+  //       },
+  //     });
+  //   } else {
+  //     this.servicio.listarRegistrosConFiltro(Number(this.cantidadSeleccionada)).subscribe({
+  //       next: (datos) => {
+  //         this.listaRegistros = [];
+  //         this.listaRegistros = datos;
 
-          this.listaRegistros.sort((a, b) => a.nombre!.localeCompare(b.nombre!));
-        },
-        error: (err) => {
-          alert("Error al cargar los productos");
-        },
-      });
-    }
+  //         this.listaRegistros.sort((a, b) => a.nombre!.localeCompare(b.nombre!));
+  //       },
+  //       error: (err) => {
+  //         alert("Error al cargar los productos");
+  //       },
+  //     });
+  //   }
+  // }
+
+  listarRegistros() {
+    const cantidad = this.cantidadSeleccionada;
+    const limite = cantidad === 'todos' ? null : Number(cantidad);
+  
+    this.servicio.listarRegistrosConFiltro(limite).subscribe({
+      next: (datos) => {
+        this.listaRegistros = datos;
+  
+        // Ordenar por primera palabra del nombre
+        // this.listaRegistros.sort((a, b) => {
+        //   const primeraPalabraA = a.nombre?.split(' ')[0].toLowerCase() || '';
+        //   const primeraPalabraB = b.nombre?.split(' ')[0].toLowerCase() || '';
+        //   return primeraPalabraA.localeCompare(primeraPalabraB);
+        // });
+      },
+      error: () => {
+        alert("Error al cargar los productos");
+      },
+    });
   }
+  
 
   cambiarCantidadSeleccionada(event: any) {
     this.cantidadSeleccionada = event.target.value;

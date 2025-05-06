@@ -1,0 +1,24 @@
+.opcionesCientes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.opcionesCientes .btn {
+    margin-right: 20px;
+}
+
+.filtrarClientes {
+    display: flex;
+    align-items: center;
+}
+
+.filtrarClientes label {
+    margin-right: 10px;
+}
+
+.filtrarClientes input {
+    padding: 5px;
+    width: 240px;
+}

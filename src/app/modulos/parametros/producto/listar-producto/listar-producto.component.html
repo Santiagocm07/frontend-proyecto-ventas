@@ -1,5 +1,13 @@
-<br>
-<a href="/parametros/producto-agregar" class="btn">Agregar Registro</a> <br>
+<section class="opcionesProductos">
+  <a href="/parametros/producto-agregar" class="btn">Agregar Registro</a>
+
+  <div class="filtrarProductos">
+    <label for="filtro">Filtrar Productos:</label>
+    <input id="filtro" type="text" [(ngModel)]="filtro" (input)="filtrarRegistros()" placeholder="Filtrar nombre, cantidad o precio">
+  </div>
+
+</section>
+
 
 <table>
     <thead>
@@ -15,8 +23,8 @@
     <tbody>
       <tr *ngFor="let r of listaRegistros | paginate: { itemsPerPage: registrosPorPagina, currentPage: pag, totalItems: total}">
         <td>{{r.nombre}}</td>
-        <td>{{r.precioVenta}}</td>
-        <td>{{r.cantidadDisponible}}</td>
+        <td>$ {{r.precioVenta}}</td>
+        <td>{{r.cantidadDisponible}} unid</td>
         <td><img src="{{BASE_URL}}obtenerArchivo/1/{{r.foto}}" class="imagenLimitadoRegistros" alt=""></td>
         <td>
             <a href="/parametros/producto-editar/{{r.id}}" class="btn orange">Editar</a>&nbsp;

@@ -1,3 +1,28 @@
 .imagenLimitadoRegistros {
     width: 70px;
 }
+
+.opcionesProductos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.opcionesProductos .btn {
+    margin-right: 20px;
+}
+
+.filtrarProductos {
+    display: flex;
+    align-items: center;
+}
+
+.filtrarProductos label {
+    margin-right: 10px;
+}
+
+.filtrarProductos input {
+    padding: 5px;
+    width: 240px;
+}

@@ -1,9 +1,8 @@
 <div class="row">
 
-
   <!-- Filtro de cantidad de productos -->
-  <div class="col s10">
-    <label for="cantidad">Selecciona cantidad de productos a mostrar:</label>
+  <div class="col s10 filtrar-productos">
+    <label for="cantidad">Productos a mostrar:</label>
     <select id="cantidad" (change)="cambiarCantidadSeleccionada($event)">
       <option *ngFor="let cantidad of cantidades" [value]="cantidad">{{ cantidad }}</option>
     </select>
@@ -16,7 +15,7 @@
         <span class="card-title" style="color: black;">{{r.nombre}}</span>
       </div>
       <div class="card-content">
-        <p>Precio: {{r.precioVenta | currency}}. <br> Cant.disponible es: {{r.cantidadDisponible}}</p>
+        <p>Precio: {{r.precioVenta | currency}}. <br> Cant.disponible: {{r.cantidadDisponible}} unid</p>
       </div>
       <div class="card-action">
         <a href="/detalles-producto/{{r.id}}">Ver más</a>

@@ -21,6 +21,15 @@ export class ClienteService {
     this.token = this.servicioSeguridad.obtenerTokenLocalStorage();
   }
 
+  listarClienteConFiltro(limit: number | null): Observable<ClienteModel[]> {
+    const url = limit? `${this.urlBase}cliente?filter={"limit": ${limit}}`: `${this.urlBase}cliente`;
+    return this.http.get<ClienteModel[]>(url, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
   listarRegistros(pag: number): Observable<PaginadorClienteModel> {
     let limit = ConfiguracionPaginacion.registroPorPagina;
     let skip = (pag - 1) * limit;

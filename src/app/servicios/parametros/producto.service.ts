@@ -24,7 +24,7 @@ export class ProductoService {
    */
   
   listarRegistrosConFiltro(limit: number | null): Observable<ProductoModel[]> {
-    const url = limit? `${this.urlBase}producto?filter={"limit":${limit}}` : `${this.urlBase}producto`;
+    const url = limit? `${this.urlBase}producto?filter={"limit":${limit}, "order":["nombre ASC"]}` : `${this.urlBase}producto?filter={"order":["nombre ASC"]}`;
     return this.http.get<ProductoModel[]>(url);
   }
 

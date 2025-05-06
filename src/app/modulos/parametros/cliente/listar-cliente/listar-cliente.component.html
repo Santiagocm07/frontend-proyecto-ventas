@@ -1,5 +1,11 @@
-<br>
-<a href="/parametros/cliente-agregar" class="btn">Agregar Registro</a> <br>
+<section class="opcionesCientes">
+  <a href="/parametros/cliente-agregar" class="btn">Agregar Registro</a>
+
+  <div class="filtrarClientes">
+    <label for="filtro">Filtrar Clientes:</label>
+    <input id="filtro" type="text" [(ngModel)]="filtro" (input)="filtarClientes()" placeholder="Buscar...">
+  </div>
+</section>
 
 <table>
     <thead>
