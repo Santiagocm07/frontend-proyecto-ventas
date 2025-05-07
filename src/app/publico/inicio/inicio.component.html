@@ -15,10 +15,11 @@
         <span class="card-title" style="color: black;">{{r.nombre}}</span>
       </div>
       <div class="card-content">
-        <p>Precio: {{r.precioVenta | currency}}. <br> Cant.disponible: {{r.cantidadDisponible}} unid</p>
+        <p>Precio: {{r.precioVenta | currency}}. <br></p>
       </div>
       <div class="card-action">
-        <a href="/detalles-producto/{{r.id}}">Ver más</a>
+        <!-- <a href="/detalles-producto/{{r.id}}">Ver más</a> -->
+        <a [routerLink]="['/parametros/detalles-producto', r.id]">Ver más</a>
       </div>
     </div>
   </div>

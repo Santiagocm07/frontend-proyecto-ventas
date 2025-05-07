@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
 import { ProductoService } from '../../../../servicios/parametros/producto.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductoModel } from '../../../../modelos/producto.model';
 import { ArchivoModel } from '../../../../modelos/archivo.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editar-producto',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './editar-producto.component.html',
   styleUrl: './editar-producto.component.css'
 })

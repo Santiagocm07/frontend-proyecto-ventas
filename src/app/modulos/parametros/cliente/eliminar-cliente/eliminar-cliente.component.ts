@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
 import { ClienteService } from '../../../../servicios/parametros/cliente.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ClienteModel } from '../../../../modelos/cliente.model';
 
 @Component({
   selector: 'app-eliminar-cliente',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './eliminar-cliente.component.html',
   styleUrl: './eliminar-cliente.component.css'
 })

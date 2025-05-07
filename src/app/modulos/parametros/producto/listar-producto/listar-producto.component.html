@@ -1,5 +1,5 @@
 <section class="opcionesProductos">
-  <a href="/parametros/producto-agregar" class="btn">Agregar Registro</a>
+  <a [routerLink]="['/parametros/producto-agregar']" class="btn">Agregar Registro</a>
 
   <div class="filtrarProductos">
     <label for="filtro">Filtrar Productos:</label>
@@ -27,8 +27,10 @@
         <td>{{r.cantidadDisponible}} unid</td>
         <td><img src="{{BASE_URL}}obtenerArchivo/1/{{r.foto}}" class="imagenLimitadoRegistros" alt=""></td>
         <td>
-            <a href="/parametros/producto-editar/{{r.id}}" class="btn orange">Editar</a>&nbsp;
-            <a href="/parametros/producto-eliminar/{{r.id}}" class="btn red">Eliminar</a>
+            <!-- <a href="/parametros/producto-editar/{{r.id}}" class="btn orange">Editar</a>&nbsp;
+            <a href="/parametros/producto-eliminar/{{r.id}}" class="btn red">Eliminar</a> -->
+            <a [routerLink]="['/parametros/producto-editar', r.id]" class="btn orange">Editar</a>&nbsp;
+            <a [routerLink]="['/parametros/producto-eliminar', r.id]" class="btn red">Eliminar</a>
         </td>
       </tr>
       <tr>

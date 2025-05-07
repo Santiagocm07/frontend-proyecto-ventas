@@ -1,0 +1,21 @@
+<div class="contenedor-producto" *ngIf="producto">
+    <div class="imagen-producto center-align">
+        <h4>{{ producto.nombre }}</h4>
+        <img [src]="BASE_URL + 'obtenerArchivo/1/' + producto.foto" alt="">
+    </div>
+
+    <div class="contenido-producto">
+        <p><strong>Precio:</strong> {{ producto.precioVenta | currency }}</p>
+        <p><strong>Disponible:</strong> {{ producto.cantidadDisponible }} unidades</p>
+    </div>
+
+    <div class="cantidad-compra">
+        <label for="cantidad">Cantidad a comprar:</label>
+        <app-contador-cantidad (cantidadCambiada)="cantidadAComprar.set($event)"></app-contador-cantidad>
+    </div>
+
+    <div class="btn-opciones">
+        <a [routerLink]="['/inicio']" class="btn volver">Volver</a>
+        <button class="btn agregar">Agregar al carrito</button>
+    </div>
+</div>

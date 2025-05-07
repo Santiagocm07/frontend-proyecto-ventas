@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClienteService } from '../../../../servicios/parametros/cliente.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ClienteModel } from '../../../../modelos/cliente.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editar-cliente',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './editar-cliente.component.html',
   styleUrl: './editar-cliente.component.css'
 })

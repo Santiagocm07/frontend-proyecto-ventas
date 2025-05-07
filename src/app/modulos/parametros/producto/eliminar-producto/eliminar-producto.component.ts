@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
 import { ProductoService } from '../../../../servicios/parametros/producto.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductoModel } from '../../../../modelos/producto.model';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-eliminar-producto',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './eliminar-producto.component.html',
   styleUrl: './eliminar-producto.component.css'
 })

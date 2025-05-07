@@ -2,9 +2,10 @@
     <div class="nav-wrapper">
         <a href="/inicio" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a *ngIf="!sesionActiva" href="/seguridad/identificar-usuario">Iniciar sesión</a></li>
-            <li><a *ngIf="sesionActiva" href="/seguridad/cambiar-clave">Cambiar clave</a></li>
-            <li><a *ngIf="sesionActiva" href="/seguridad/cerrar-sesion">Cerrar sesión</a></li>
+            <li><a [routerLink]="['/ventas/carrito-compras']"> <i class="material-icons">add_shopping_cart</i></a></li>
+            <li><a *ngIf="!sesionActiva" [routerLink]="['/seguridad/identificar-usuario']">Iniciar sesión</a></li>
+            <li><a *ngIf="sesionActiva" [routerLink]="['/seguridad/cambiar-clave']">Cambiar clave</a></li>
+            <li><a *ngIf="sesionActiva" [routerLink]="['/seguridad/cerrar-sesion']">Cerrar sesión</a></li>
         </ul>
     </div>
 </nav>

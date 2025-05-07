@@ -6,11 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteModel } from '../../../../modelos/cliente.model';
 import { ConfiguracionPaginacion } from '../../../../config/configuracion.paginacion';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listar-cliente',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule, FormsModule, RouterModule],
   templateUrl: './listar-cliente.component.html',
   styleUrl: './listar-cliente.component.css'
 })

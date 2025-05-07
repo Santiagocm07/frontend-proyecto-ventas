@@ -6,10 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ConfiguracionPaginacion } from '../../../../config/configuracion.paginacion';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listar-producto',
-  imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule, FormsModule, RouterModule],
   templateUrl: './listar-producto.component.html',
   styleUrl: './listar-producto.component.css'
 })

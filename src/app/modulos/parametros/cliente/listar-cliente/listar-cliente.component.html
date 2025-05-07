@@ -1,5 +1,5 @@
 <section class="opcionesCientes">
-  <a href="/parametros/cliente-agregar" class="btn">Agregar Registro</a>
+  <a [routerLink]="['/parametros/cliente-agregar']" class="btn">Agregar Registro</a>
 
   <div class="filtrarClientes">
     <label for="filtro">Filtrar Clientes:</label>
@@ -25,8 +25,10 @@
         <td>{{r.celular}}</td>
         <td>{{r.direccion}}</td>
         <td>
-            <a href="/parametros/cliente-editar/{{r.id}}" class="btn orange">Editar</a>&nbsp;
-            <a href="/parametros/cliente-eliminar/{{r.id}}" class="btn red">Eliminar</a>
+            <!-- <a href="/parametros/cliente-editar/{{r.id}}" class="btn orange">Editar</a>&nbsp;
+            <a href="/parametros/cliente-eliminar/{{r.id}}" class="btn red">Eliminar</a> -->
+            <a [routerLink]="['/parametros/cliente-editar', r.id]" class="btn orange">Editar</a>&nbsp;
+            <a [routerLink]="['/parametros/cliente-eliminar', r.id]" class="btn red">Eliminar</a>
         </td>
       </tr>
       <tr>

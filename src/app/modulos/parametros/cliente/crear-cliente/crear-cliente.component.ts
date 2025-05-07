@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
 import { ClienteService } from '../../../../servicios/parametros/cliente.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ClienteModel } from '../../../../modelos/cliente.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crear-cliente',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './crear-cliente.component.html',
   styleUrl: './crear-cliente.component.css'
 })

@@ -8,6 +8,7 @@ import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
 import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
+import { DetallesProductoComponent } from './producto/detalles-producto/detalles-producto.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: "producto-editar/:id",
     component: EditarProductoComponent
+  },
+  {
+    path: "detalles-producto/:id",
+    component: DetallesProductoComponent
   },
   {
     path: "cliente-listar",

@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ProductoModel } from '../../../../modelos/producto.model';
 import { ArchivoModel } from '../../../../modelos/archivo.model';
 import { ProductoService } from '../../../../servicios/parametros/producto.service';
 
 @Component({
   selector: 'app-crear-producto',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './crear-producto.component.html',
   styleUrl: './crear-producto.component.css'
 })

@@ -62,7 +62,8 @@
 
             <div class="row">
                 <div class="col s12">
-                    <a href="/parametros/cliente-listar" class="btn red">Cancelar</a>&nbsp;
+                    <!-- <a href="/parametros/cliente-listar" class="btn red">Cancelar</a>&nbsp; -->
+                    <a [routerLink]="['/parametros/cliente-listar']" class="btn red">Cancelar</a>&nbsp;
                     <button (click)="editarCliente()" class="btn waves-effect waves-light">Editar</button>
                 </div>
             </div>

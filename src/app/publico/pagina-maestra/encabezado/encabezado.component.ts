@@ -4,10 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 import { SeguridadService } from '../../../servicios/seguridad.service';
 import { UsuarioValidadoModel } from '../../../modelos/usuario.validado.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-encabezado',
-  imports: [CommonModule, ReactiveFormsModule, MenuLateralComponent],
+  imports: [CommonModule, ReactiveFormsModule, MenuLateralComponent, RouterModule],
   templateUrl: './encabezado.component.html',
   styleUrl: './encabezado.component.css'
 })
