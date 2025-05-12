@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductoModel } from '../../../../modelos/producto.model';
 import { ConfiguracionRutasBackend } from '../../../../config/configuracion.rutas.backend';
 import { ProductoService } from '../../../../servicios/parametros/producto.service';
 import { ContadorCantidadComponent } from '../../../../compartidos/contador-cantidad/contador-cantidad.component';
+import { CarritoService } from '../../../../servicios/compras/carrito.service';
 
 @Component({
   selector: 'app-detalles-producto',
@@ -13,18 +14,21 @@ import { ContadorCantidadComponent } from '../../../../compartidos/contador-cant
   styleUrl: './detalles-producto.component.css'
 })
 export class DetallesProductoComponent {
-  producto: ProductoModel = {
-    id: 0,
-    nombre: '',
-    precioVenta: 0,
-    cantidadDisponible: 0,
-    foto: ''
-  };
+  // producto: ProductoModel = {
+  //   id: 0,
+  //   nombre: '',
+  //   precioVenta: 0,
+  //   cantidadDisponible: 0,
+  //   foto: ''
+  // };
+  producto: ProductoModel | null = null;
   BASE_URL: string = ConfiguracionRutasBackend.urlNegocio;
 
   constructor(
     private route: ActivatedRoute,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private router: Router,
+    private carritoService: CarritoService
   ) {}
 
   cantidadAComprar = signal(1);
@@ -48,6 +52,19 @@ export class DetallesProductoComponent {
         alert('No se pudo cargar el producto');
       }
     });
+  }
+
+  agregarAlCarrito() {
+    if (!this.producto || this.producto.id === undefined) return;
+
+    // if(this.cantidadAComprar() > (this.producto?.cantidadDisponible || 0)) {
+    //   alert (`Lo sentimos, solo hay ${this.producto?.cantidadDisponible} unidades disponibles`);
+    //   return;
+    // }
+
+    this.carritoService.agregarProdCarrito(this.producto.id, this.cantidadAComprar());
+    this.router.navigate(["/inicio"]);
+    alert("Producto agregado al carrito de compras");
   }
 
 }

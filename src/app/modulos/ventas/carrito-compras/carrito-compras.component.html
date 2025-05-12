@@ -1,1 +1,104 @@
-<p>carrito-compras works!</p>
+<!-- <div class="contenedor-productos">
+    <h2>Lista de compras</h2>
+    <div *ngFor="let producto of productosEnCarrito" class="productos-carrito">
+
+        <ng-container *ngIf="getProducto(producto.idProducto) as detalle">
+            <div class="imagen-producto">
+                <img [src]="BASE_URL + 'obtenerArchivo/1/' + detalle.foto" alt="{{ detalle.nombre }}">
+            </div>
+    
+            <div class="informacion-producto">
+                <h3>{{ detalle.nombre }}</h3>
+                <p>Producto: {{ producto.idProducto }} - Cantidad a comprar: {{ producto.cantidad }}</p>
+                <p>Precio unidad: {{ detalle.precioVenta }}</p>
+                <app-contador-cantidad 
+                    [cantidadInicial]="producto.cantidad"
+                    (cantidadCambiada)="actualizarCantidad(producto.idProducto, $event)">
+                </app-contador-cantidad>
+            </div>
+    
+            <div class="costo-producto">
+                <button (click)="eliminarProducto(producto.idProducto)"><i class="material-icons">delete_forever</i></button>
+                <p>Total: {{ (detalle.precioVenta || 0) * (producto.cantidad || 0) }}</p>
+            </div>
+
+        </ng-container>
+       
+    </div>
+
+    <div class="datos-pedido">
+        <h3>Total del pedido: {{ totalCarrito }}</h3>
+    </div>
+</div> -->
+
+
+<div class="contenedor-productos">
+    <h2>Lista de compras</h2>
+
+    <table class="tabla-carrito" *ngIf="productosEnCarrito.length > 0">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Precio Unidad</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let producto of productosEnCarrito">
+                <ng-container *ngIf="getProducto(producto.idProducto) as detalle">
+                    <td class="imagen-producto">
+                        <img [src]="BASE_URL + 'obtenerArchivo/1/' + detalle.foto" alt="{{ detalle.nombre }}">
+                    </td>
+
+                    <td class="nombre-producto">
+                        <strong>{{ detalle.nombre }}</strong>
+                        <small>Id: {{ producto.idProducto }}</small>
+                    </td>
+
+                    <td class="precio-unidad">
+                        ${{ detalle.precioVenta }}
+                    </td>
+
+                    <td class="cantidad">
+                        <app-contador-cantidad 
+                            [cantidadInicial]="producto.cantidad"
+                            [cantidadMaxima]="getProducto(producto.idProducto)?.cantidadDisponible"
+                            (cantidadCambiada)="actualizarCantidad(producto.idProducto, $event)">
+                        </app-contador-cantidad>
+                    </td>
+
+                    <td class="subtotal">
+                        ${{ (detalle.precioVenta || 0) * (producto.cantidad || 0) }}
+                    </td>
+
+                    <td class="eliminar-producto">
+                        <button (click)="eliminarProducto(producto.idProducto)" class="btn-eliminarProd"><i class="material-icons">delete_forever</i></button>
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" style="text-align: right;">
+                    <div class="total-pedido">
+                        Total del pedido: {{ totalCarrito }}
+                    </div>
+                    <div class="btn-opciones">
+                        <button class="btn vaciar-carrito" (click)="vaciarCarrito()">Limpiar carrito</button>
+                        <button class="btn agregar-producto" [routerLink]="['/inicio']"><i class="material-icons">add_shopping_cart</i></button>
+                        <button class="btn realizar-compra">Realizar compra</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div *ngIf="productosEnCarrito.length === 0" class="carrito-vacio">
+        <p>🛒 Tu carrito está vacío. ¡Agrega productos para comenzar tu compra!</p>
+    </div>
+</div>
+

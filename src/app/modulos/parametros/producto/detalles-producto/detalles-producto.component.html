@@ -11,11 +11,14 @@
 
     <div class="cantidad-compra">
         <label for="cantidad">Cantidad a comprar:</label>
-        <app-contador-cantidad (cantidadCambiada)="cantidadAComprar.set($event)"></app-contador-cantidad>
+        <app-contador-cantidad
+            [cantidadMaxima]="producto.cantidadDisponible" 
+            (cantidadCambiada)="cantidadAComprar.set($event)">
+        </app-contador-cantidad>
     </div>
 
     <div class="btn-opciones">
         <a [routerLink]="['/inicio']" class="btn volver">Volver</a>
-        <button class="btn agregar">Agregar al carrito</button>
+        <button class="btn agregar" (click)="agregarAlCarrito()">Agregar al carrito</button>
     </div>
 </div>
